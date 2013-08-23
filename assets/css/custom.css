@@ -1,0 +1,18 @@
+/* 
+    Document   : style
+    Created on : Aug 23, 2013, 3:13:32 AM
+    Author     : johnbautista
+    Description:
+        Overrides the style set by Bootstrap
+*/
+
+h1 { font-size: 36px; line-height: 40px; }
+h2 { font-size: 30px; line-height: 40px; }
+h3 { font-size: 24px; line-height: 40px; }
+h4 { font-size: 18px; line-height: 20px; }
+h5 { font-size: 14px; line-height: 20px; }
+h6 { font-size: 12px; line-height: 20px; }
+
+#page {
+   margin: 20px;
+}
