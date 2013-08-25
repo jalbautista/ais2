@@ -25,7 +25,7 @@
 </select>
 
 <label for="address">Address</label>
-<textarea name="address" value="<?=$members_item['address']?>"></textarea><br /> 
+<textarea id="address" name="address"><?=$members_item['address']?></textarea><br /> 
 
 <label for="membership_date">Membership Date</label>
 <input type="date" name="membership_date" value="<?=$members_item['membership_date']?>" /><br /><br />
@@ -41,6 +41,7 @@
    Active
 </label>
 
+<a href="<?php echo base_url()?>index.php/members"> Back to Members</a>
 <input class="btn" type="submit" name="submit" value="Save" />
 
 </form>

@@ -7,9 +7,22 @@ class Members_model extends CI_Model {
    }
 
    public function get_member($member_id = FALSE) {
-
+      //enable profiling
+      /*
+      $this->output->enable_profiler(TRUE);
+      $sections = array(
+          'queries' => TRUE
+      );
+      $this->output->set_profiler_sections($sections);
+       **/
+      
       if ($member_id === FALSE) {
-         $query = $this->db->get('tbl_member');
+         $this->db->select("m.member_id as member_id, COALESCE(u.username,'---') as username, m.last_name as last_name, 
+         m.first_name as first_name, m.middle_name as middle_name, m.position as position, 
+         m.is_active as is_active", FALSE);
+         $this->db->from('tbl_member as m');
+         $this->db->join('tbl_user as u', 'u.tbl_member_id = m.member_id', 'left');
+         $query = $this->db->get();
          return $query->result_array();
       }
 
@@ -19,7 +32,6 @@ class Members_model extends CI_Model {
 
    public function add_member() {
       //$this->load->helper('url');
-
       //$slug = url_title($this->input->post('title'), 'dash', TRUE);
 
       $data = array(
@@ -31,13 +43,12 @@ class Members_model extends CI_Model {
           'address' => $this->input->post('address'),
           'membership_date' => $this->input->post('membership_date'),
           'is_active' => $this->input->post('is_active')
-      
       );
 
       //$this->db->where('member_id', $this->input->post('member_id'));
-      if($this->input->post('member_id')){
+      if ($this->input->post('member_id')) {
          return $this->db->update('tbl_member', $data, array('member_id' => $this->input->post('member_id')));
-      }else{
+      } else {
          return $this->db->insert('tbl_member', $data);
       }
    }

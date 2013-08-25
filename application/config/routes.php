@@ -54,6 +54,9 @@ $route['members/update/(:any)'] = 'members/update/$1';
 $route['members/view/(:any)'] = 'members/view/$1'; //test
 $route['members'] = 'members';
 
+$route['user/view/(:any)'] = 'user/view/$1'; //test
+$route['user'] = 'user';
+
 $route['(:any)'] = 'pages/view/$1';
 $route['default_controller'] = 'pages/view';
 
